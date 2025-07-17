@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./intro.css" />
   </head>
   <body>
-    <!-- partial:index.partial.html -->
+    <div class="custom-cursor" id="cursor"></div>
     <div id="wrapper">
       <canvas id="canvas" class="noise"></canvas>
       <div id="js-scroll" class="main-page">
@@ -108,6 +108,8 @@
             </li>
           </ul>
         </nav>
+
+        <!-- MAIN CONTENT -->
         <div class="contet-page" data-scroll-section>
           <div class="list-main">
             <ul class="list-main__books">
@@ -116,7 +118,6 @@
                 data-scroll
                 data-scroll-delay="0.8"
                 data-scroll-speed="1"
-                data-scroll-call="item-1"
               >
                 안녕하세요!
               </li>
@@ -125,7 +126,6 @@
                 data-scroll
                 data-scroll-delay="0.6"
                 data-scroll-speed="1"
-                data-scroll-call="item-2"
               >
                 어제보다 더 나은 내일을
               </li>
@@ -134,7 +134,6 @@
                 data-scroll
                 data-scroll-delay="0.4"
                 data-scroll-speed="1"
-                data-scroll-call="item-3"
               >
                 개발하는 FE 개발자
               </li>
@@ -143,7 +142,6 @@
                 data-scroll
                 data-scroll-delay="0.2"
                 data-scroll-speed="1"
-                data-scroll-call="item-4"
               >
                 김이레 입니다!
               </li>
@@ -152,7 +150,6 @@
                 data-scroll
                 data-scroll-delay="0.08"
                 data-scroll-speed="1"
-                data-scroll-call="item-5"
               >
                 Provide a great website
               </li>
@@ -161,7 +158,6 @@
                 data-scroll
                 data-scroll-delay="0.06"
                 data-scroll-speed="1"
-                data-scroll-call="item-6"
               >
                 experience for your users
               </li>
@@ -170,7 +166,6 @@
                 data-scroll
                 data-scroll-delay="0.04"
                 data-scroll-speed="1"
-                data-scroll-call="item-7"
               >
                 I glad to see you ! ;)
               </li>
@@ -182,73 +177,63 @@
               <li class="blur-effect" data-scroll>
                 <sup class="number-description">(00-1)</sup
                 ><span class="text-description"
-                  >Lorem Ipsum is simply dummy text.</span
+                  >And they glorified God in me</span
                 >
               </li>
               <li class="blur-effect" data-scroll>
                 <sup class="number-description">(00-2)</sup
                 ><span class="text-description"
-                  >Lorem Ipsum is simply dummy text.</span
+                  >Your word is a lamp to my feet and a light to my path.</span
                 >
               </li>
               <li class="blur-effect" data-scroll>
                 <sup class="number-description">(00-3)</sup
                 ><span class="text-description"
-                  >Lorem Ipsum is simply dummy text.</span
+                  >Whatever you do, work heartily, as for the Lord and not for men</span
                 >
               </li>
               <li class="blur-effect" data-scroll>
                 <sup class="number-description">(00-4)</sup
                 ><span class="text-description"
-                  >Lorem Ipsum is simply dummy text.</span
+                  >Encourages those who hope in the Lord to be strong and courageous</span
                 >
               </li>
               <li class="blur-effect" data-scroll>
                 <sup class="number-description">(00-5)</sup
                 ><span class="text-description"
-                  >Lorem Ipsum is simply dummy text.</span
+                  >For God has not given us the spirit of fear, but of power and of love and of a sound mind</span
                 >
               </li>
             </ul>
           </div>
+
           <div class="text-content-page blur-effect" data-scroll>
             <p>
-              There are many variations of passages of Lorem Ipsum available,
-              but the majority have suffered alteration in some form, by
-              injected humour, or randomised words which don't look even
-              slightly believable. If you are going to use a passage of Lorem
-              Ipsum, you need to be sure there isn't anything embarrassing
-              hidden in the middle of text. All the Lorem Ipsum generators on
-              the Internet tend to repeat predefined chunks as necessary, making
-              this the first true generator on the Internet. It uses a
-              dictionary of over 200 Latin words, combined with a handful of
-              model sentence structures, to generate Lorem Ipsum which looks
-              reasonable. The generated Lorem Ipsum is therefore always free
-              from repetition, injected humour, or non-characteristic words etc.
+              안녕하세요! 저는 18살 프론트엔드 개발자 김이레 입니다! 저는 지난
+              2년간 html css javascript를 중심으로 프론트엔드 기술을 학습하여
+              실무 역량을 키워왔습니다. 또한 <span id ="bold">직접 개발한 웹페이지를 직접
+                배포하여 300명 이상의 사용자를 확보한 경험</span>을 보유하고 있으며 이를
+              통해 사용자 피드백을 수집하고 서비스를 개선하는 전체적인 개발
+              프로세스를 경험 했습니다 저는 사용자와의 <span id="bold">상호작용을 중시</span> 하며,
+              단순한 기능 구현을 넘어 사용자에게 독창저기고 인상적인 웹 경험을
+              제공하는 것을 목표로 합니다. 앞으로 지속적인 학습을 통해 더 나은
+              사용자 경험을 제공하는 프론트엔드 개발자로 성장하고자 합니다
+              저에 대해 더 알고싶으시다면 아래 메뉴를 참고해 주세요 
             </p>
           </div>
         </div>
-      </div>
-      <div class="nav-wrapper">
-        <nav>
-          <a href="#" class="link">
-            <span>Home</span>
-          </a>
-          <a href="#" class="link">
-            <span>Our Story</span>
-          </a>
-          <a href="#" class="link">
-            <span>Studio</span>
-          </a>
-          <a href="#" class="link">
-            <span>Contact</span>
-          </a>
-  
+        <div class="nav-wrapper" data-scroll-section>
+          <nav class="cursor-nav">
+            <a href="#" class="link"><span>Home</span></a>
+            <a href="#" class="link"><span>Contact</span></a>
+            <a href="#" class="link"><span>Profile</span></a>
+            <a href="#" class="link"><span>Skills</span></a>
+          </nav>
           <div class="cursor"></div>
-        </nav>
+        </div>
       </div>
     </div>
-    <!-- partial -->
+
     <script src="https://rawcdn.githack.com/locomotivemtl/locomotive-scroll/3e3bf62d1ea55586d69403dc6325b4f34130f3a8/dist/locomotive-scroll.min.js"></script>
     <script src="./intro.js"></script>
   </body>
