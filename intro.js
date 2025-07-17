@@ -82,30 +82,45 @@ const scroll = new LocomotiveScroll({
   class: "is-inview",
 });
 
+// 커서 및 링크 움직임 효과
 (function () {
-  const link = document.querySelectorAll("nav > .link");
+  const links = document.querySelectorAll(".cursor-nav .link");
   const cursor = document.querySelector(".cursor");
 
-  const animateit = function (e) {
-    const span = this.querySelector(".link > span");
-    const { offsetX: x, offsetY: y } = e,
-      { offsetWidth: width, offsetHeight: height } = this,
-      move = 25,
-      xMove = (x / width) * (move * 2) - move,
-      yMove = (y / height) * (move * 2) - move;
+  // 마우스 커서 따라다니게 (정확한 위치 맞춤)
+  window.addEventListener("mousemove", (e) => {
+    const { clientX: x, clientY: y } = e;
+
+    // transform을 사용하여 정확한 위치 설정
+    cursor.style.transform = `translate(${x - 15}px, ${y - 15}px)`;
+  });
+
+  // span 살짝 따라다니는 효과
+  const animateLink = function (e) {
+    const span = this.querySelector("span");
+    const { offsetX: x, offsetY: y } = e;
+    const { offsetWidth: width, offsetHeight: height } = this;
+
+    const move = 25;
+    const xMove = (x / width) * (move * 2) - move;
+    const yMove = (y / height) * (move * 2) - move;
 
     span.style.transform = `translate(${xMove}px, ${yMove}px)`;
 
     if (e.type === "mouseleave") span.style.transform = "";
   };
 
-  const editCursor = (e) => {
-    const { clientX: x, clientY: y } = e;
-    cursor.style.left = x + "px";
-    cursor.style.top = y + "px";
-  };
-
-  link.forEach((b) => b.addEventListener("mousemove", animateit));
-  link.forEach((b) => b.addEventListener("mouseleave", animateit));
-  window.addEventListener("mousemove", editCursor);
+  links.forEach((link) => {
+    link.addEventListener("mousemove", animateLink);
+    link.addEventListener("mouseleave", animateLink);
+  });
 })();
+
+const cursor = document.getElementById("cursor");
+
+document.addEventListener("mousemove", (e) => {
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+});
+
+
