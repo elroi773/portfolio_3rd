@@ -24,9 +24,9 @@ body {
   background: #2a7d9b;
   background: linear-gradient(
     307deg,
-    rgba(42, 125, 155, 1) 15%,
+    rgb(44, 173, 220) 15%,
     rgba(87, 199, 164, 1) 50%,
-    rgba(83, 191, 237, 1) 100%
+    rgb(245, 252, 255) 100%
   );
   font-family: "Questrial", sans-serif;
   cursor: none;
@@ -45,7 +45,7 @@ ul {
 
 li {
   list-style: none;
-  color: #011d7a;
+  color: #2443a9;
 }
 
 .main-page {
@@ -195,7 +195,7 @@ li {
 }
 
 .text-content-page p {
-  color: #3561f3;
+  color: #234bcd;
   margin-bottom: 20px;
   font-size: 16px;
   text-align: justify;
@@ -206,6 +206,7 @@ li {
 
 #bold {
   font-weight: bold;
+  color: #06299f;
 }
 .noise {
   position: fixed;
