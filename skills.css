@@ -1,3 +1,31 @@
+/* 폰트 임포트 */
+@import url("https://fonts.googleapis.com/css?family=Libre+Franklin:400,700&subset=latin");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap");
+
+/* 기본 리셋 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* HTML, BODY */
+html {
+  font-family: "IBM Plex Mono", monospace;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  color: #778da9;
+  font-family: "Libre Franklin", sans-serif;
+  cursor: none;
+}
+
+/* H1 */
 h1 {
   font: 8vmin/1 "Libre Franklin", sans-serif;
   font-weight: 700;
@@ -9,17 +37,86 @@ h1 {
   margin-bottom: 2rem;
 }
 
+/* 커서 */
+#cursor {
+  position: fixed;
+  top: -16px;
+  left: -16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e8ffa5;
+  z-index: 999;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  opacity: 0;
+}
+
+#cursor.-activated {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+h1{
+    font-size: 15px;
+    padding-top: 90px;
+}
+
+/* 페이드 인 애니메이션 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* SVG 백그라운드 */
+svg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
+/* 태그 클라우드 컨테이너 */
 .tags-cloud {
+  position: fixed;
+  top: calc(50% - 30vmin);
+  left: calc(50% - 30vmin);
+  width: 60vmin;
+  height: 60vmin;
+  list-style: none;
+  opacity: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
   max-width: 90vw;
+  z-index: 1;
 }
 
-.tag .wrap {
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
-  color: white;
+.tags-cloud.-loaded {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+/* 태그 아이템 */
+.tags-cloud > .tag {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 5vmin;
+  font-weight: bold;
+  transition: transform 0.5s linear, opacity 0.5s linear;
+}
+
+.tags-cloud > .tag > .wrap {
+  display: inline-block;
+  transform: translateX(-50%) translateY(-50%);
+  background: linear-gradient(135deg, #d1acf7, #fffef2);
+  color: rgb(69, 80, 99);
   padding: 0.6em 1.2em;
   font-size: 1rem;
   border-radius: 30px;
@@ -27,90 +124,124 @@ h1 {
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.tag .wrap:hover {
+.tags-cloud > .tag > .wrap:hover {
   transform: scale(1.1);
   box-shadow: 0 0 15px #ffffffaa;
 }
 
-
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap');
-
-@-webkit-keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    font-family: 'IBM Plex Mono', monospace;
-}
-
-body {
-    background: #ffffff;
-    color: #778da9;
-    cursor: none;
-}
-
-#cursor {
+/* 상단 고정 네비게이션 바 */
+.nav {
     position: fixed;
-    top: -16px;
-    left: -16px;
-    z-index: 1;
-    height: 32px;
-    width: 32px;
-    border-radius: 50%;
-    background: #e0e1dd;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+  }
+  
+  /* 메뉴 컨테이너 */
+  nav.textmenu {
+    font-family: 'Gmarket Sans', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 30px;
+    /* background: linear-gradient(45deg, #5c63f0, #771edd); */
+    border-radius: 40px;
+    gap: 10px;
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);   */
+    transition: background 0.5s ease, box-shadow 0.5s ease;
+  }
+  
+  /* 🪄 마우스를 올렸을 때 배경 서서히 사라지게 */
+  .nav:hover nav.textmenu {
+    background: transparent;
+    box-shadow: none;
+  }
+  
+  /* 기본 메뉴 항목 숨김 */
+  nav.textmenu a {
     opacity: 0;
-}
-
-#cursor.-activated {
-    -webkit-animation: fadeIn 1s ease-out forwards;
-            animation: fadeIn 1s ease-out forwards;
-}
-
-.tags-cloud {
-    position: fixed;
-    top: calc(50% - 30vmin);
-    left: calc(50% - 30vmin);
-    height: 60vmin;
-    width: 60vmin;
-    list-style: none;
-    opacity: 0;
-}
-
-.tags-cloud.-loaded {
-    -webkit-animation: fadeIn 1s ease-out forwards;
-            animation: fadeIn 1s ease-out forwards;
-}
-
-.tags-cloud > .tag {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: 5vmin;
+    visibility: hidden;
+    transform: translateY(10px);
+    padding: 12px 20px;
+    color: #ece3ff;
+    text-decoration: none;
+    font-size: 16px;
     font-weight: bold;
-    transition: transform .5s linear, opacity .5s linear;
-}
-
-.tags-cloud > .tag > .wrap {
+    border-radius: 4px;
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease,
+        visibility 0.5s ease,
+        color 0.3s ease,
+        background-color 0.3s ease;
     display: inline-block;
-    transform: translateX(-50%) translateY(-50%);
-}
+    position: relative;
+  }
+  
+  /* hover 시 메뉴 항목 효과 */
+  nav.textmenu a:hover {
+    color: #ece3ff;
+    transform: translateY(-3px) scale(1.1);
+    /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); */
+  }
+  
+  /* 밑줄 효과 */
+  nav.textmenu a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background-color: #f2f5ff;
+    transition: width 0.3s ease, left 0.3s ease;
+  }
+  
+  nav.textmenu a:hover::before {
+    width: 100%;
+    left: 0;
+  }
+  
+  /* 마우스 오버 시 메뉴 항목 딜레이 등장 */
+  .nav:hover nav.textmenu a:nth-child(1) {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition-delay: 0s;
+  }
+  .nav:hover nav.textmenu a:nth-child(2) {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+  }
+  .nav:hover nav.textmenu a:nth-child(3) {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+  }
+  .nav:hover nav.textmenu a:nth-child(4) {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+  }
+  .nav:hover nav.textmenu a:nth-child(5) {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+  }
+  
+  /* 마지막 span은 숨김 */
+  nav.textmenu span {
+    display: none;
+  }
+  
+  
