@@ -1,118 +1,183 @@
-
 /* 상단 고정 네비게이션 바 */
 .nav {
-    position: fixed;
-    top: 0;
-    left: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+}
+
+/* 메뉴 컨테이너 */
+nav.textmenu {
+  font-family: "Gmarket Sans", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 30px;
+  /* background: linear-gradient(45deg, #5c63f0, #771edd); */
+  border-radius: 40px;
+  gap: 10px;
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);   */
+  transition: background 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* 🪄 마우스를 올렸을 때 배경 서서히 사라지게 */
+.nav:hover nav.textmenu {
+  background: transparent;
+  box-shadow: none;
+}
+
+/* 기본 메뉴 항목 숨김 */
+nav.textmenu a {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  padding: 12px 20px;
+  color: #ece3ff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s ease,
+    color 0.3s ease, background-color 0.3s ease;
+  display: inline-block;
+  position: relative;
+}
+
+/* hover 시 메뉴 항목 효과 */
+nav.textmenu a:hover {
+  color: #ece3ff;
+  transform: translateY(-3px) scale(1.1);
+  /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); */
+}
+
+/* 밑줄 효과 */
+nav.textmenu a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background-color: #f2f5ff;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+nav.textmenu a:hover::before {
+  width: 100%;
+  left: 0;
+}
+
+/* 마우스 오버 시 메뉴 항목 딜레이 등장 */
+.nav:hover nav.textmenu a:nth-child(1) {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+.nav:hover nav.textmenu a:nth-child(2) {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+.nav:hover nav.textmenu a:nth-child(3) {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+.nav:hover nav.textmenu a:nth-child(4) {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+.nav:hover nav.textmenu a:nth-child(5) {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+/* 마지막 span은 숨김 */
+nav.textmenu span {
+  display: none;
+}
+
+html,
+body {
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 115%;
+  width: auto;
+  opacity: 0;
+}
+
+@media (min-aspect-ratio: 4/3) {
+  img {
+    height: auto;
     width: 100%;
-    z-index: 1000;
-    padding: 10px 0;
-    display: flex;
-    justify-content: center;
-    background-color: transparent;
   }
-  
-  /* 메뉴 컨테이너 */
-  nav.textmenu {
-    font-family: 'Gmarket Sans', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 30px;
-    /* background: linear-gradient(45deg, #5c63f0, #771edd); */
-    border-radius: 40px;
-    gap: 10px;
-    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);   */
-    transition: background 0.5s ease, box-shadow 0.5s ease;
+}
+
+@media (max-aspect-ratio: 3/5) {
+  img {
+    left: 30%;
   }
-  
-  /* 🪄 마우스를 올렸을 때 배경 서서히 사라지게 */
-  .nav:hover nav.textmenu {
-    background: transparent;
-    box-shadow: none;
-  }
-  
-  /* 기본 메뉴 항목 숨김 */
-  nav.textmenu a {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    padding: 12px 20px;
-    color: #ece3ff;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 4px;
-    transition:
-        opacity 0.5s ease,
-        transform 0.5s ease,
-        visibility 0.5s ease,
-        color 0.3s ease,
-        background-color 0.3s ease;
-    display: inline-block;
-    position: relative;
-  }
-  
-  /* hover 시 메뉴 항목 효과 */
-  nav.textmenu a:hover {
-    color: #ece3ff;
-    transform: translateY(-3px) scale(1.1);
-    /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); */
-  }
-  
-  /* 밑줄 효과 */
-  nav.textmenu a::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 50%;
+  left: 30%;
+  max-width: 50%;
+  transform: translate(-50%, -50%);
+  font-family: sans-serif;
+  font-size: 10vh;
+  font-weight: bold;
+  pointer-events: none;
+  text-transform: uppercase;
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .overlay {
     left: 50%;
-    width: 0;
-    height: 3px;
-    background-color: #f2f5ff;
-    transition: width 0.3s ease, left 0.3s ease;
+    width: 90%;
+    max-width: 90%;
   }
-  
-  nav.textmenu a:hover::before {
-    width: 100%;
-    left: 0;
+}
+
+@media (max-aspect-ratio: 3/5) {
+  .overlay {
+    font-size: 5vh;
   }
-  
-  /* 마우스 오버 시 메뉴 항목 딜레이 등장 */
-  .nav:hover nav.textmenu a:nth-child(1) {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    transition-delay: 0s;
-  }
-  .nav:hover nav.textmenu a:nth-child(2) {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    transition-delay: 0.1s;
-  }
-  .nav:hover nav.textmenu a:nth-child(3) {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    transition-delay: 0.2s;
-  }
-  .nav:hover nav.textmenu a:nth-child(4) {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    transition-delay: 0.3s;
-  }
-  .nav:hover nav.textmenu a:nth-child(5) {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    transition-delay: 0.4s;
-  }
-  
-  /* 마지막 span은 숨김 */
-  nav.textmenu span {
-    display: none;
-  }
-  
-  
-  
+}
