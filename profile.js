@@ -310,3 +310,17 @@ function render() {
 
     requestAnimationFrame(render);
 }
+
+// Scroll 애니메이션
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {
+    threshold: 0.2
+  });
+
+  const targets = document.querySelectorAll('.fade-in-up');
+  targets.forEach(el => observer.observe(el));
