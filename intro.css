@@ -195,19 +195,71 @@ li {
 }
 
 .text-content-page p {
-  color: #234bcd;
-  margin-bottom: 20px;
-  font-size: 16px;
-  text-align: justify;
-  font-family: "Pretendard-Regular";
-  font-weight: 400;
+  position: relative;
+  color: #1a2a6c;
+  margin: 50px auto;
+  font-size: 18px;
+  line-height: 1.9;
   text-align: center;
+  font-family: "Pretendard-Regular", sans-serif;
+  font-weight: 400;
+  max-width: 800px;
+  padding: 30px 35px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+}
+
+/* ✨ 반짝이는 배경 패턴 효과 */
+.text-content-page p::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.08) 20%,
+    transparent 70%
+  );
+  animation: glow 8s linear infinite;
+  z-index: 0;
 }
 
 #bold {
-  font-weight: bold;
-  color: #06299f;
+  position: relative;
+  font-weight: 700;
+  color: transparent;
+  background: linear-gradient(90deg, #06299f, #234bcd, #00aaff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  display: inline;
+  animation: glowText 3s ease-in-out infinite alternate;
 }
+
+@keyframes glow {
+  0% {
+    transform: rotate(0deg) translate(0, 0);
+  }
+  100% {
+    transform: rotate(360deg) translate(0, 0);
+  }
+}
+
+@keyframes glowText {
+  0% {
+    filter: drop-shadow(0 0 2px rgba(0, 170, 255, 0.4));
+  }
+  100% {
+    filter: drop-shadow(0 0 6px rgba(0, 170, 255, 0.9));
+  }
+}
+
 .noise {
   position: fixed;
   top: 0;
