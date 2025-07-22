@@ -30,7 +30,6 @@ body {
   );
   font-family: "Questrial", sans-serif;
   cursor: none;
-
 }
 
 canvas {
@@ -240,6 +239,28 @@ li {
   -webkit-background-clip: text;
   display: inline;
   animation: glowText 3s ease-in-out infinite alternate;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #00bcd4, #8bc34a);
+  border-radius: 20px;
+  color: white;
+  padding: 30px;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+}
+
+#top {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  perspective: 800px;
+}
+
+.text-content-page {
+  font-size: 1rem;
 }
 
 @keyframes glow {
