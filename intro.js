@@ -123,4 +123,14 @@ document.addEventListener("mousemove", (e) => {
   cursor.style.top = e.clientY + "px";
 });
 
+var o = $(".card");
 
+$("#top").on("mousemove", function (t) {
+  var e = -($(this).width()/2 - t.offsetX) / 20;
+  var n = ($(this).height()/2 - t.offsetY) / 20;
+  o.css("transform", `rotateY(${e}deg) rotateX(${n}deg)`);
+});
+
+$("#top").on("mouseleave", function () {
+  o.css("transform", "rotateY(0deg) rotateX(0deg)");
+});
